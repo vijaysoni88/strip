@@ -1,0 +1,13 @@
+<div class="center">
+	<% if user_signed_in? %>
+		<li>
+			<%= link_to('Logout', destroy_user_session_path, method: :delete) %> |  
+			<%= link_to('Go Premium', premiums_path, title: "Price: $250 USD / month") %>
+		</li>
+	<% else %>
+		<li>
+	  	<%= link_to('Login', new_user_session_path) %> |
+	  	<%= link_to('Register', new_user_registration_path) %>
+	  </li>
+	<% end %>
+</div>

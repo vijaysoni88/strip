@@ -1,0 +1,36 @@
+<td><%= link_to "Home",root_path %>
+<table border= "1">
+  <thead>
+    <tr>
+      <th>Subscription ID</th>
+      <th>Current Period Start</th>
+      <th>Current Period End</th>
+      <th>Customer id</th>
+      <th>Plan id</th>
+      <th> Quantity</th>
+      <th>Currency</th>
+      <th>Amount </th>
+      <th>Interval</th>
+      <th>Plan Staus</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td><%= subscription.id %></td>
+        <td><%= Time.at(subscription.current_period_start).strftime("%d/%m/%Y %k:%M") %></td>
+        <td><%= Time.at(subscription.current_period_end).strftime("%d/%m/%Y %k:%M") %></td>
+        <td><%= subscription["customer"] %></td>
+        <td><%= subscription["plan"]["id"] %></td>
+        <td><%= subscription["quantity"] %></td>
+        <td><%= subscription["plan"]["currency"] %></td>
+        <td><%= subscription["plan"]["amount"] %></td>
+        <td><%= subscription["plan"]["interval"] %></td>
+        <td><%= subscription["plan"]["active"]== true ? "Active" : "Inactive" %></td>
+        <td><%= link_to "Unsubscribe", unsubscribe_path(:subscription_id => subscription.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

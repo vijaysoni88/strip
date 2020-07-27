@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: hnr_development
+  pool: 5
+  username: sandeep
+  password: "password"
